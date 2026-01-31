@@ -1,52 +1,140 @@
-# RoleDashboard
+# Role Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+A modern Angular application demonstrating role-based access control with a clean, user-friendly dashboard interface.
 
-## Development server
+## 🚀 Features
 
-To start a local development server, run:
+- **Role-Based Access Control**: Secure routing with role guards
+- **Dynamic Role Selection**: Users can select their role from a dedicated selection page
+- **Protected Routes**: Routes guarded based on user roles
+- **Custom Directives**: 
+  - `hasRole`: Show/hide elements based on user roles
+  - `showIf`: Conditional rendering directive
+- **Modern Angular**: Built with Angular 21+ using standalone components
+- **Styled with Tailwind CSS**: Utility-first CSS framework
+- **PrimeNG Components**: Rich UI component library
+- **Signal-Based State Management**: Leveraging Angular signals for reactive state
+
+## 📋 Prerequisites
+
+- Node.js (v18 or higher)
+- npm 10.8.2 or higher
+- Angular CLI 21.1.2
+
+## 🛠️ Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd role-dashboard
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+## 🏃 Development Server
+
+Start the development server:
 
 ```bash
+npm start
+# or
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navigate to `http://localhost:4200/`. The application will automatically reload when you make changes to the source files.
 
-## Code scaffolding
+## 🏗️ Project Structure
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+src/app/
+├── core/
+│   └── guards/
+│       └── role.guard.ts        # Route protection based on roles
+├── pages/
+│   ├── data/                    # Data display page (role-protected)
+│   ├── error/                   # Error page
+│   └── role-selection/          # Role selection interface
+├── services/
+│   ├── role.service.ts          # Role state management
+│   └── data.service.ts          # Data fetching service
+└── shared/
+    └── directives/
+        ├── has-role.directive.ts    # Role-based visibility directive
+        └── show-if.directive.ts     # Conditional display directive
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🔐 Role Management
+
+The application uses a signal-based `RoleService` to manage user roles:
+
+- **setRole(role: string)**: Assign a role to the current user
+- **getRole()**: Retrieve the current user's role
+- **hasRole()**: Check if a user has a role assigned
+
+The `roleGuard` protects routes and redirects unauthorized users to the role selection page.
+
+## 🎨 Styling
+
+This project uses:
+- **Tailwind CSS 4**: Utility-first CSS framework
+- **PrimeNG**: UI component library with theming support
+- **SCSS**: For component-specific styles
+
+## 🧪 Testing
+
+Run unit tests with Vitest:
 
 ```bash
-ng generate --help
+npm test
+# or
+ng test
 ```
 
-## Building
+## 📦 Building
 
-To build the project run:
+Build the project for production:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The build artifacts will be stored in the `dist/` directory, optimized for performance.
 
-## Running unit tests
+## 🛠️ Code Scaffolding
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Generate new components, services, directives, etc.:
 
 ```bash
-ng test
+# Generate a component
+ng generate component component-name
+
+# Generate a service
+ng generate service service-name
+
+# Generate a directive
+ng generate directive directive-name --standalone
 ```
 
-## Running end-to-end tests
+For all available schematics:
+```bash
+ng generate --help
+```
 
-For end-to-end (e2e) testing, run:
+## 📚 Technologies
+
+- **Angular 21.1.0**: Modern web framework
+- **TypeScript 5.9.2**: Typed JavaScript
+- **RxJS 7.8.0**: Reactive programming library
+- **PrimeNG 21.1.1**: UI component suite
+- **Tailwind CSS 4.1.12**: Utility-first CSS
+- **Vitest 4.0.8**: Fast unit testing framework
+
+## 📄 License
+
+This project is private and not licensed for public use.
 
 ```bash
 ng e2e
