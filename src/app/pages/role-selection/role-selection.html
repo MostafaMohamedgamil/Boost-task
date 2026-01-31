@@ -1,0 +1,28 @@
+<section class="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+  <div class="text-center mb-6">
+    <h1 class="text-2xl font-bold">Role-Based Dashboard</h1>
+    <p class="text-gray-600 mt-2">Select your role to access the appropriate data and features</p>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
+    <div class="flex flex-col gap-4">
+      @for (role of roles; track $index) {
+        <div class="flex items-center gap-4 border rounded-lg p-4 hover:bg-gray-50 cursor-pointer">
+          <div class="flex-1">
+            <label class="font-medium">{{ role.name }}</label>
+            <p class="text-gray-500 text-sm">{{ role.description }}</p>
+          </div>
+          <p-radioButton name="role" [value]="role.name" [(ngModel)]="selectedRole"></p-radioButton>
+        </div>
+      }
+    </div>
+
+    <button
+      (click)="continue()"
+      pButton
+      [disabled]="!selectedRole"
+      class="w-full mt-4"
+      label="Continue"
+    ></button>
+  </div>
+</section>
